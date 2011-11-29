@@ -34,8 +34,6 @@ function letsJQuery() {
         }, {
             name: 'Hazmat',
             url: 'https://github.com/kaezarrex'
-        }, {
-            name: 'Tim'
         }
     ];
 
