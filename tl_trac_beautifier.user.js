@@ -101,20 +101,20 @@ function letsJQuery() {
 
     $('.timeline').css('font-size', '14px');
 
-    $('dt.changeset').css({
+    $('.timeline dt').css({
         'background-image': 'none !important',
         'clear': 'both'
     });
 
-    $('dt.changeset a').css({
+    $('.timeline dt a').css({
         'background-image': 'none !important',
         'padding-left': '10px',
         'border-radius': '5px'
     });
 
-    $('dd.changeset').css('margin-left', '4em');
+    $('.timeline dd').css('margin-left', '4em');
 
-    $('dt.changeset').each(function(index){
+    $('.timeline dt').each(function(index){
         var $author = $(this).find('.author'),
             email;
 
