@@ -26,22 +26,35 @@ function addJQuery(callback) {
 
 // All your JQuery code must be inside this function
 function letsJQuery() {
+
+    var authors = [
+        {
+            name: 'Jason',
+            url: null
+        }, {
+            name: 'Hazmat',
+            url: 'https://github.com/kaezarrex'
+        }, {
+            name: 'Tim'
+        }
+    ];
+
     $('body').css({
         width: 1024,
         margin: '15px auto'
     });
-    
+
     // -----------------------------------------------------
     // For the Navigation
     // -----------------------------------------------------
-    
+
     var $myActiveTicketsNav;
     $('#mainnav ul li').each(function(){
         var $this = $(this);
-        
+
         if($this.find('a').text() === "View Tickets"){
             $this.find('a').text("View All Tickets");
-            
+
             $myActiveTicketsNav = $('<li class="activeTicketsNav"><a href="https://dev.transloc.com/trac/report/21">My Active Tickets</a></li>').insertBefore($this);
         }
     });
@@ -105,6 +118,10 @@ function letsJQuery() {
     (function() {
         var $prefs = $('#prefs');
 
+        if ($prefs.length == 0) {
+            return;
+        }
+
         $prefs.html($prefs.html().replace(/<br>/g, ''));
         $prefs.css('float', 'none');
         $prefs.find('label, div, fieldset').css('display', 'inline-block');
@@ -149,5 +166,35 @@ function letsJQuery() {
             $(this).append('<img src="' + gravatarUrl(email, 30) + '" style="float: left; border-radius: 5px; margin-top:4px;">');
         }
     });
+
+    // -----------------------------------------------------
+    // For the Footer
+    // -----------------------------------------------------
+
+    (function() {
+        var $footer = $('#footer'),
+            html = '<p style="text-align:center; margin: 0 300px;">Styled by ',
+            i;
+
+        for (i = 0; i < authors.length; i++) {
+            if (authors[i].url) {
+                html += '<a href="' + authors[i].url + '">' + authors[i].name + '</a>';
+            } else {
+                html += authors[i].name;
+            }
+
+            if (i == authors.length - 2) {
+                html += ' and ';
+            } else if (i == authors.length - 1) {
+                html += '.';
+            } else {
+                html += ', ';
+            }
+        }
+
+        html += '</p>';
+        $footer.append(html);
+
+    })();
 }
 
