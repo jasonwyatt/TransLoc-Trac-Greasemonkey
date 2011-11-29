@@ -30,7 +30,25 @@ function letsJQuery() {
         width: 1024,
         margin: '15px auto'
     });
-
+    
+    // -----------------------------------------------------
+    // For the Navigation
+    // -----------------------------------------------------
+    
+    var $myActiveTicketsNav;
+    $('#mainnav ul li').each(function(){
+        var $this = $(this);
+        
+        if($this.find('a').text() === "View Tickets"){
+            $this.find('a').text("View All Tickets");
+            
+            $myActiveTicketsNav = $('<li class="activeTicketsNav"><a href="https://dev.transloc.com/trac/report/21">My Active Tickets</a></li>').insertBefore($this);
+        }
+    });
+    if(/My Active Tickets/.exec($('title').text())){
+        $('#mainnav ul li').removeClass('active');
+        $myActiveTicketsNav.addClass('active');
+    }
 
     // -----------------------------------------------------
     // For the Tickets
