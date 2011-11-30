@@ -24,6 +24,8 @@ function addJQuery(callback) {
     document.body.appendChild(script);
 }
 
+
+
 // All your JQuery code must be inside this function
 function letsJQuery() {
 
@@ -44,6 +46,76 @@ function letsJQuery() {
         width: 1024,
         margin: '15px auto'
     });
+    
+    function styleRoadmap(){
+        // summary:
+        //      Styles the roadmap page.
+
+        if(window.location.pathname !== "/trac/roadmap"){
+            return;
+        }
+
+        var $progressTables = $('table.progress'),
+            $progressTableCells = $('table.progress td'),
+            $progressClosedCells = $('table.progress td.closed'),
+            $progressOpenedCells = $('table.progress td.open'),
+            $percentages = $('p.percent');
+
+        $percentages.css({
+            fontSize: '35px',
+            lineHeight: '35px',
+            fontWeight: 'bold',
+            textShadow: '0 -1px 0 #DDD',
+            color: '#AAA'
+        });
+
+        $progressTables.css({
+            border: 'none',
+            marginBottom: 10,
+            width: '890px',
+            maxWidth: '10000px'
+        });
+
+        $progressTableCells.css({
+            height: '35px'
+        });
+
+        $progressClosedCells.css({
+            borderRadius: '17px 0 0 17px',
+            //boxShadow: '0 1px 3px black'
+        });
+        // gradients for each type:
+        var gradientVersions = [
+            'linear-gradient(top, hsl(69,58%,58%) 0%,hsl(78,63%,45%) 50%,hsl(80,100%,33%) 51%,hsl(77,64%,49%) 100%)',
+            '-webkit-linear-gradient(top, hsl(69,58%,58%) 0%,hsl(78,63%,45%) 50%,hsl(80,100%,33%) 51%,hsl(77,64%,49%) 100%)',
+            '-webkit-gradient(linear, left top, left bottom, color-stop(0%,hsl(69,58%,58%)), color-stop(50%,hsl(78,63%,45%)), color-stop(51%,hsl(80,100%,33%)), color-stop(100%,hsl(77,64%,49%)))',
+            '-moz-linear-gradient(top, hsl(69,58%,58%) 0%, hsl(78,63%,45%) 50%, hsl(80,100%,33%) 51%, hsl(77,64%,49%) 100%)'
+        ];
+        for(var i = 0, len = gradientVersions.length; i < len; i++){
+            $progressClosedCells.css({
+                backgroundImage: gradientVersions[i]
+            });
+        }
+    
+    
+        $progressOpenedCells.css({
+            borderRadius: '0 17px 17px 0',
+            backgroundColor: '#EEE',
+            //boxShadow: '0 1px 3px black'
+        });
+        gradientVersions = [
+            '-moz-linear-gradient(top, hsl(200,20%,97%) 0%, hsl(200,21%,92%) 50%, hsl(205,18%,87%) 51%, hsl(210,25%,97%) 100%)',
+            '-webkit-gradient(linear, left top, left bottom, color-stop(0%,hsl(200,20%,97%)), color-stop(50%,hsl(200,21%,92%)), color-stop(51%,hsl(205,18%,87%)), color-stop(100%,hsl(210,25%,97%)))',
+            '-webkit-linear-gradient(top, hsl(200,20%,97%) 0%,hsl(200,21%,92%) 50%,hsl(205,18%,87%) 51%,hsl(210,25%,97%) 100%)',
+            'linear-gradient(top, hsl(200,20%,97%) 0%,hsl(200,21%,92%) 50%,hsl(205,18%,87%) 51%,hsl(210,25%,97%) 100%)'
+        ];
+        for(var i = 0, len = gradientVersions.length; i < len; i++){
+            $progressOpenedCells.css({
+                backgroundImage: gradientVersions[i]
+            });
+        }
+    }
+    styleRoadmap();
 
     // -----------------------------------------------------
     // Utilities
