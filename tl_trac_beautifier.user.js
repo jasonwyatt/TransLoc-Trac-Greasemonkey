@@ -30,10 +30,13 @@ function letsJQuery() {
     var authors = [
         {
             name: 'Jason',
-            url: null
+            url: 'https://github.com/jasonwyatt'
         }, {
             name: 'Hazmat',
             url: 'https://github.com/kaezarrex'
+        }, {
+            name: 'Tim',
+            url: 'https://github.com/generictjohnson'
         }
     ];
 
@@ -173,7 +176,7 @@ function letsJQuery() {
 
         if ($author.length == 1) {
             user = $($author[0]).text();
-            $(this).append('<img src="' + gravatarUrl(user, 30) + '" style="float: left; border-radius: 5px; margin-top:4px;">');
+            $(this).append('<img src="' + gravatarUrl(user, 32) + '" style="float: left; border-radius: 5px; margin-top:4px;">');
         }
     });
 
